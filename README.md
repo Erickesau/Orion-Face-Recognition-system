@@ -45,23 +45,37 @@ Personal spanish blog Outdated www.erickesau.blogspot.com
 _________________________________________________
 
 HOW TO USE:
+
     Open 'Orion FRS.py' to run the programm.
 ______________________________________________
 
 Inspired by science fiction movies:
+
     Oblivion
+    
     Prometheus
+    
     Matrix
+    
 Inspired by:
+
     Elon Musk
+    
     SpaceX
+    
     Nasa
 
 
 Tools used:
+
     Miniconda3-4.3.31-Windows-x86_64 with python 3.6
+    
     Windows 10 64.bit
+    
     Photoshop
+    
     Wavepad audio editor
+    
     Images source: Oblivion, Polaris face recognition.
+    
     Audio source: Oblivion, Youtube.
