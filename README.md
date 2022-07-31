@@ -7,8 +7,10 @@ _________________________________________________
 
 ### FUNCTION AVAILABLE IN THE LAST RELEASE
 --------------------------------------
-Add new person profile to the data base.
-List all person profiles that are in data base.
+> Add new person profile to the data base.
+> 
+> List all person profiles that are in data base.
+> 
 > Find profiles with the filter feature.
 > 
 > Edit Delete and update profiles.
@@ -26,11 +28,17 @@ List all person profiles that are in data base.
 _________________________________________________
 
 License: MIT
+
 Copyright (c) 2021-2022 Erick esau martinez
+
 Web www.erickesau.wordpress.com
+
 https://www.paypal.com/paypalme/erickesau0
+
 Email: martinezesau90@gmail.com
+
 https://github.com/Erickesau
+
 Personal spanish blog Outdated www.erickesau.blogspot.com
 
 _________________________________________________
