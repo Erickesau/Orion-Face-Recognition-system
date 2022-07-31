@@ -8,14 +8,23 @@ _________________________________________________
 FUNCTION AVAILABLE IN THE LAST RELEASE
 --------------------------------------
 > Add new person profile to the data base.
+> 
 > List all person profiles that are in data base.
+> 
 > Find profiles with the filter feature.
+> 
 > Edit Delete and update profiles.
+> 
 > Recognize persons from pictures.
+> 
 > Recognize persons using the webcam.
+> 
 > Mark person as wanted to play alarm when its recognized.
+> 
 > Mark person as wanted to open a custom file  when its recognized.
+> 
 > Log of previous recognized persons.
+> 
 > Futuristic design with Visual effects and sound effects.
 _________________________________________________
 
