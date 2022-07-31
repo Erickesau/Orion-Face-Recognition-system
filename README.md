@@ -1,6 +1,7 @@
 # Orion-Face-Recognition-system
 
 Its a software that provides features for facial recognition using AI (Artificial Inteligency).
+
 if you like please contribute with a small donation.
 
 <img src="/Examplefiles/search camera.png" width=600>
@@ -41,7 +42,14 @@ _________________________________________________
     dlib
     Face Recognition
     Playsound version 1.2.2 recomended because newer version show error and need extra dependences
-
+### INSTALLING REQUIREMENTS
+### windows
+    pip install opencv-python
+    pip install pillow
+    pip install numpy
+    pip install dlib
+    pip install face_recognition
+    pip install playsound==1.2.2
 
 ### HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
