@@ -1,0 +1,55 @@
+v1.2.8
+fixed bug, program was not playing alarm sound when wanted person detected.
+dragging is enabled only in the title bar intead of all the programm window.
+added button in about tab to donate with paypal
+added anchor and wraplength parameters to the label to show the user info corretly in search faces tab.
+fixed bug in Face_Recognition_System.py thread was open after the programm close when camera is not connected.
+
+
+
+v1.2.7
+added log button
+added about button
+some fixes in the comment entry and add button
+
+
+
+v1.2.6
+Added camera hud and setting
+New button images and effects
+new audio files and changes on the audio file names
+
+
+
+
+v1.2.5      7:56 PM 10/24/2021
+*Added funcion to move the window on mouse draw.
+*Updated the images path from ./images to ./media and changed some image names.
+*Added program sounds require playsound module I used version 1.2.2, dont use version 1.3.0 because have bugs.
+*Updated Face_Recognition_System.py class if ./media/camera.png image not exist will create black blank image
+  the image show an robot eye while the camera is loading,
+  moved all the import modules lines to the top
+
+
+
+
+
+v1.2.4
+profiles.py updated to v1.0.6 added filter feature to the profiles class and changed completely most of the code sintax
+updated gui list faces tab buttons and funcions
+
+
+
+v1.2.3
+added the option to edit or delete profiles
+
+v1.2.2
+added tab feature to list profiles
+some improvements in the face_recognition_system.py class
+
+
+v1.2.1
+the add image button change icon when pickup new profile picture
+
+v1.2.0
+projetc completed
