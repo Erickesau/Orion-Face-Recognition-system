@@ -29,12 +29,17 @@ FUNCTION AVAILABLE IN THE LAST RELEASE
 _________________________________________________
 
 License: MIT
+
 Copyright (c) 2021-2022 Erick esau martinez
+
 Web www.erickesau.wordpress.com
 
 https://www.paypal.com/paypalme/erickesau0
+
 Email: martinezesau90@gmail.com
+
 https://github.com/Erickesau
+
 Personal spanish blog Outdated www.erickesau.blogspot.com
 
 _________________________________________________
