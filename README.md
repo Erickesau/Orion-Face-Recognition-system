@@ -1,7 +1,13 @@
 # Orion-Face-Recognition-system
-<img src="/examplefiles/search.png">
+
 Its a software that provides features for facial recognition using AI (Artificial Inteligency).
 if you like please contribute with a small donation.
+
+<img src="/Examplefiles/search camera.png" width=600>
+<img src="/Examplefiles/add.PNG" width=600>
+<img src="/Examplefiles/list.png" width=600>
+<img src="/Examplefiles/search from file.png" width=600>
+<img src="/Examplefiles/search.png" width=600>
 
 _________________________________________________
 
@@ -27,21 +33,6 @@ _________________________________________________
 > Futuristic design with Visual effects and sound effects.
 _________________________________________________
 
-License: MIT
-
-Copyright (c) 2021-2022 Erick esau martinez
-
-Web www.erickesau.wordpress.com
-
-https://www.paypal.com/paypalme/erickesau0
-
-Email: martinezesau90@gmail.com
-
-https://github.com/Erickesau
-
-Personal spanish blog Outdated www.erickesau.blogspot.com
-
-_________________________________________________
 
 ### REQUIREMENTS:
     OpenCV
@@ -74,3 +65,19 @@ ______________________________________________
     Wavepad audio editor
     Images source: Oblivion, Polaris face recognition.
     Audio source: Oblivion, Youtube.
+--------------------------------------------------
+License: MIT
+
+Copyright (c) 2021-2022 Erick esau martinez
+
+Web www.erickesau.wordpress.com
+
+https://www.paypal.com/paypalme/erickesau0
+
+Email: martinezesau90@gmail.com
+
+https://github.com/Erickesau
+
+Personal spanish blog Outdated www.erickesau.blogspot.com
+
+_________________________________________________
