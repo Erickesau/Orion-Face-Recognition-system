@@ -47,29 +47,13 @@ _________________________________________________
 REQUIREMENTS:
 
     OpenCV
-    
-    pillow
-    
-    numpy
-    
-    dlib
-    REQUIREMENTS:
-48
 
-49
-    OpenCV
-50
-    
-51
     pillow
-52
-    
-53
+
     numpy
-54
     
-55
     dlib
+    
     Face Recognition
     
     Playsound version 1.2.2 recomended because newer version show error and need extra dependences
