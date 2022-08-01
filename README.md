@@ -2,6 +2,9 @@
 
 Its a software that provides features for facial recognition using AI (Artificial Inteligency).
 
+the binary was available to purchase but no one buys it,
+so I decided to share the projet for free 
+
 if you like please contribute with a small donation.
 
 <img src="/Examplefiles/search camera.png" width=600>
