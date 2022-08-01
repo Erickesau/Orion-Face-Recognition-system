@@ -54,7 +54,7 @@ _________________________________________________
 ### HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
     
-### also you can download the exe binary for windows 64bit
+### also you can download the standalone exe binary for windows 64bit
 https://www.mediafire.com/file/tju58321tbo049v/Orion_Face_Recognition_System_v1.2.8.exe/file
 ______________________________________________
 
