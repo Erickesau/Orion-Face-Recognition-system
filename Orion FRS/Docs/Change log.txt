@@ -1,3 +1,7 @@
+v1.2.9
+disabled overrideredirect because in linux filedialog was not shown 
+    and also entered text was not goin to the entry intead was goin the console.
+
 v1.2.8
 fixed bug, program was not playing alarm sound when wanted person detected.
 dragging is enabled only in the title bar intead of all the programm window.
