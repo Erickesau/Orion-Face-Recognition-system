@@ -90,7 +90,7 @@ class Root(Tk):
 
 
         ### ======================  TOP BAR BUTTONS  =========================
-        self.bar_menu = Frame(bg="gray", width=1280,height=35, relief="raised",borderwidth=5)
+        self.bar_menu = Frame(bg="black", width=1280,height=35, relief="raised",borderwidth=5)
         self.bar_menu.place(x=0, y=-2)
 
         Button(self.bar_menu, text="LIST FACES", command=self.list_faces, bg="#005588", fg="white",font=("Verdana",12), activebackground="#00ccff").place(x = 20, y = 0)
@@ -421,7 +421,7 @@ class Root(Tk):
         f.pack()
         Label(f, text="ORION",bg="#004444",fg="orange",font="arial 20").place(x=80,y=10)
         Label(f, text="Orion Face Recognition System",bg="#004444",fg="#00ff00").place(x=10,y=40)
-        Label(f, text="Version 1.2.8",bg="#004444",fg="#00ff00").place(x=10,y=60)
+        Label(f, text="Version 1.2.9",bg="#004444",fg="#00ff00").place(x=10,y=60)
         Label(f, text="Author: Erick Esau Martinez",bg="#004444",fg="#00ff00").place(x=10,y=80)
         Label(f, text="Mail: martinezesau90@gmail.com",bg="#004444",fg="#00ff00").place(x=10,y=100)
         Button(f, text="Website: https://erickesau.wordpress.com",command=lambda x=None:webbrowser.open("https://erickesau.wordpress.com"),bg="#004444",fg="#00ff00",activebackground="orange").place(x=10,y=120)
