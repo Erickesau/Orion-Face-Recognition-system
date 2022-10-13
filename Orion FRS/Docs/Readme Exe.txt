@@ -34,6 +34,23 @@ _________________________________________________
 
 HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
+
+SETTING:
+torelance
+    if you are getting wron match it might be that the people in your photo look very similar and a lower
+    tolerance value is needed to make face comparisons more strict i recomend set bar to 55
+quickscan
+    quickscan return the first result found.
+
+    in one file search :
+    if quickscan is disabled if a result is found will continue searching the full database and show a list with all result.
+    if quickscan enabled will show the first result found.
+
+    in multifile search :
+    *if quickscan is disabled if a result is found continue searching the full database for more results 
+    and show only the result with lowes tolerance for each face search.
+    *if quickscan is enabled return the first result found for each face search.(faster)
+    
 ______________________________________________
 
 Inspired by science fiction movies:

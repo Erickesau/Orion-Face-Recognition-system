@@ -1,3 +1,17 @@
+
+v1.3.1
+face_crop.py crop the face when add new image
+Face_Recognition_System.py module updated to 1.5.3 return image path if encode correct or false if error
+images format changed to png old database will not work unles convert to png
+
+
+v1.3.0
+added multifiles with multifaces scan button
+added setting torelance and setting (quickscan <> fullscan)
+Face_Recognition_System.py module updated to 1.5.2
+new module quick_face_extractor.py
+
+
 v1.2.9
 disabled overrideredirect because in linux filedialog was not shown 
     and also entered text was not goin to the entry intead was goin the console.
