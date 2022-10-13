@@ -1,5 +1,5 @@
 # -*- coding: latin-1 -*-
-# Face_Recognition_System v1.5.1 by erick esau martinez
+# Face_Recognition_System v1.5.3 by erick esau martinez
 # thanks to Glare y Transductor for tutorial
 #I edited the code and created a class with aditional features, am begingner is very dificult for me.
 
@@ -59,7 +59,7 @@ class scanner:
     
 
 """
-    def __init__(self, camera=0):
+    def __init__(self, camera=0, tolerance=0.6):
         
         #======================  generate the variables  ================================
         self.camera = camera
@@ -67,6 +67,7 @@ class scanner:
         self.nombres_conocidos = []
         self.encoding_image = False
         self.loading_data = False
+        self.var_tolerance = float(tolerance)
         #definimos 3 variables self.frame contiene los frames self.vdetected la ruta de la imagen que coincidio
         # si self.vstop es true el scanner se cierra,if vstop true quit
         self.vdetected = False
@@ -100,7 +101,7 @@ encode new image and save to the data base. encode_image(path to your photo.jpg 
 the user info is a dictionary with all the user info example:
 user_info={"name":"erick", "lname":"martinez", "job":"test", "country":"usa", "phone":"1234567"}
 this process take a lot of cpu maybe the GUI will look a litle slow while encoding you shoul run this method on  a separated Thread.
-when its done will return 0 if the image was procesed correct or 1 if some error ocurred.
+when its done will return profile path if the image was procesed correct or False if some error ocurred.
 """
         
         self.encoding_image = True
@@ -119,12 +120,7 @@ when its done will return 0 if the image was procesed correct or 1 if some error
             # open image
             img = Image.open(foto)
             
-            if foto[-4:].lower() == "jpeg" or foto[-4:].lower() == ".jpg":
-                extension = "jpeg"
-            elif foto[-4:].lower() == ".png":
-                extension = "png"
-            # save image img.save(new name and extension , previus extension jpg is not valid in pillow intead use jpeg)
-            img.save(f"./data_base/{folder_name}/"+"image.jpeg", extension)
+            img.save(f"./data_base/{folder_name}/"+"image.png")
             # save user info with json
             res = json.dumps(user_info)
             with open(f"./data_base/{folder_name}/"+"profile.json", "w") as f:
@@ -134,12 +130,12 @@ when its done will return 0 if the image was procesed correct or 1 if some error
             # append the encodes to the current loaded data so we can start using now
             self.encodings_conocidos.append(personal_encodings)
             self.nombres_conocidos.append("./data_base"+"/"+folder_name)
-            # if the process was correct return 0
+            # if the process was correct return the profile path
             self.encoding_image = False
-            return 0
+            return f"./data_base/{folder_name}"
         except:
             print("some error ocurred the image was not encoded")
-            return 1
+            return False
             raise
         finally:
             self.encoding_image = False
@@ -258,29 +254,67 @@ stop the recognizer and release camera
         self.vdetected = False
 
 
-    def scan_file(self,file):
+    def tolerance(self, tolerance):
+        """
+tolerance float lower number make the recognition more strict.
+"""
+        self.var_tolerance = float(tolerance)
+
+
+
+    def scan_file(self, file, quickscan=True):
         """
 open a photo and recognize faces, and return the path of picture that matched from data base.
 this is very easy just send the image path scan_file("path_to_image.jpg") it will return the
 folder path that contain the numpy array that matched.
+quickscan: if set to True will return a string with the first match path (default),
+if set to False will return all result that match it will be a tuple with 2 list ([names], [distances])
+names list contain the profiles paths that match while distances contain the similarity distances.
 """
-
-        self.vdetected = False
         if not self.encodings_conocidos and not self.nombres_conocidos:
             print("there is not data loaded, use load_data method to load the data")
             
-        file = face_recognition.load_image_file(file)
-        photo = face_recognition.face_encodings(file)[0]
+        loaded_file = face_recognition.load_image_file(file)
+        try:
+            encoding = face_recognition.face_encodings(loaded_file)[0]
+        except:
+            print(
+                "[INFO] no faces detected in: ",file,)
+            return None
         
-        for encoding in self.encodings_conocidos:
-            #Buscamos si hay alguna coincidencia con algún encoding conocido:
-            coincidencias = face_recognition.compare_faces(self.encodings_conocidos, photo) 
+        if quickscan:
+            
+            # find if there is some similarity that match any know enoding
+            coincidencias = face_recognition.compare_faces(self.encodings_conocidos, encoding, tolerance=self.var_tolerance)        
             #El array 'coincidencias' es ahora un array de booleanos. Si contiene algun 'True', es que ha habido alguna coincidencia:
             if True in coincidencias:
-                self.vdetected = self.nombres_conocidos[coincidencias.index(True)]
+                # return profile name
+                return self.nombres_conocidos[coincidencias.index(True)]
             else:
-                self.vdetected = False
-        return self.vdetected
+                return False
+    
+        else:
+            
+            # search the full data base and compare the match distance of faces
+            all_distances = face_recognition.face_distance(self.encodings_conocidos, encoding)
+            # make a list because is a numpy array
+            all_distances = list(all_distances)
+            names = []
+            distances = []
+            index = 0
+            for d in all_distances:
+                # take faces only if distance is lower than tolerance
+                if d <= self.var_tolerance:
+                    # get name from the list of names
+                    name = self.nombres_conocidos[index]
+                    names.append(name)
+                    distances.append(d)
+                index += 1
+            # if a result found return a list of names and a list of distances.
+            if names:       
+                return names, distances
+            else:
+                return False
             
                 
             
@@ -343,7 +377,7 @@ folder path that contain the numpy array that matched.
                 for encoding in encodings_rostros:
          
                     #Buscamos si hay alguna coincidencia con algún encoding conocido:
-                    coincidencias = face_recognition.compare_faces(self.encodings_conocidos, encoding)
+                    coincidencias = face_recognition.compare_faces(self.encodings_conocidos, encoding, tolerance=self.var_tolerance)
          
                     #El array 'coincidencias' es ahora un array de booleanos. Si contiene algun 'True', es que ha habido alguna coincidencia:
                     if True in coincidencias:

@@ -112,7 +112,7 @@ also you can specifi a parent widget so the frame will apear inside of these wid
             Label(profile.a, text=self.data[a+self.index], width=25,justify="left", font=("Arial", 8), bg="light gray").grid(row=0,column=1, sticky="nsew")
             
             # read and resize the picture from the specified index.
-            img = Image.open(self.path[self.index + a] + "/"+"image.jpeg")
+            img = Image.open(self.path[self.index + a] + "/"+"image.png")
             img = img.resize((115, 138))
             # make picture compatible with tkinter
             imgtk = ImageTk.PhotoImage(image=img)
