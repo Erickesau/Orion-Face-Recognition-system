@@ -1,5 +1,5 @@
 # Orion-Face-Recognition-system
-<h1>V1.3.1</h1>
+<h1>V1.3.2</h1>
 
 Its a software that provides features for facial recognition using AI (Artificial Inteligency).
 
