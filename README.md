@@ -58,7 +58,7 @@ _________________________________________________
 ### HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
     
-### also you can download the standalone exe binary for windows 64bit
+### also you can download the standalone exe binary v1.3.2 for windows 64bit
 https://www.mediafire.com/download/m5br2sd8urqgebz
 ______________________________________________
 
