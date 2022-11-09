@@ -1,5 +1,5 @@
 # -*- coding: latin-1 -*-
-# Face_Recognition_System v1.5.3 by erick esau martinez
+# Face_Recognition_System v1.5.4 by erick esau martinez
 # thanks to Glare y Transductor for tutorial
 #I edited the code and created a class with aditional features, am begingner is very dificult for me.
 
@@ -101,7 +101,7 @@ encode new image and save to the data base. encode_image(path to your photo.jpg 
 the user info is a dictionary with all the user info example:
 user_info={"name":"erick", "lname":"martinez", "job":"test", "country":"usa", "phone":"1234567"}
 this process take a lot of cpu maybe the GUI will look a litle slow while encoding you shoul run this method on  a separated Thread.
-when its done will return profile path if the image was procesed correct or False if some error ocurred.
+when its done will return profile if the image was procesed correct or False if some error ocurred.
 """
         
         self.encoding_image = True
@@ -178,7 +178,7 @@ after data is loaded you can call the method scan_camera to recognize peoples.
                     except:
                         print("error maybe there is not .npy files to load please encode_images firt.")
             if not self.nombres_conocidos:
-                print("there is not .npy files to load, please encode_images first, encode_image(path to photo.jpg, user_info='test')")
+                print("there is not .npy files to load, please encode_images first, encode_image(path to photo, user_info='test')")
             self.loading_data = False
         p = Thread(target=subprocess)
         p.start()
@@ -214,6 +214,8 @@ use get_frame method to get one frame from the camera, it will return the frame
 use person_found method to check if the person in the front of camera is recognized,it will be false if not recognised.
 use stop method to stop the camera recognicion.
 """
+        if self.vstop:
+            return
         if not self.encodings_conocidos and not self.nombres_conocidos:
             print("there is not data loaded, use load_data method to load the data")
         # iniciamos la funcion _scan_ en un proceso paralelo ya que se crea un bucle while y pausaria nuestro codigo
@@ -265,7 +267,7 @@ tolerance float lower number make the recognition more strict.
     def scan_file(self, file, quickscan=True):
         """
 open a photo and recognize faces, and return the path of picture that matched from data base.
-this is very easy just send the image path scan_file("path_to_image.jpg") it will return the
+this is very easy just send the image path scan_file("path_to_image") it will return the
 folder path that contain the numpy array that matched.
 quickscan: if set to True will return a string with the first match path (default),
 if set to False will return all result that match it will be a tuple with 2 list ([names], [distances])
@@ -427,7 +429,7 @@ names list contain the profiles paths that match while distances contain the sim
                 break
                 
         webcam.release()
-
+        self.vstop = False
 
 
 

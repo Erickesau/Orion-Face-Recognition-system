@@ -1,16 +1,16 @@
-# class to list all profiles v1.0.6 code by erick esau martinez
+# class to list all profiles v1.0.7 code by erick esau martinez
 
 import os
 import PIL
 import json
 import random
 from PIL import Image, ImageTk
-from tkinter import Button, Tk, Frame, Label
+from tkinter import Button, Tk, Frame, Label, PhotoImage
 
 class widget:
     def __init__(self):
         self.index = 0
-        self.data = []
+        self.wanted = []
         self.path = []
 
     def list_profiles(self, filter_values=False):
@@ -21,7 +21,7 @@ the keys must be available in the data_base/profile.json  file.
 """
         # set vars to default
         self.index = 0
-        self.data = []
+        self.wanted = []
         self.path = []
         # list all profiles path
         self.list = os.walk(top="data_base")
@@ -49,26 +49,11 @@ the keys must be available in the data_base/profile.json  file.
                                 # if current profile values not math continue with next profile
                                 continue
 
-                        
-                        # extract some of the profile info from json file and save to 'info var'
-                        info = ""
-                        if i["wanted"][0] or i["wanted"][1]: info += "!!! Wanted !!!" + "\n"
-                        info += str(i["name"]) + " " + str(i["lname"]) + "\n"
-                        info += "DOB: " + str(i["day"]) +"/"+ str(i["month"]) +"/"+ str(i["year"]) + "\n"
-                        info += "Loc: " + str(i["country"]) +" / "+ str(i["city"]) + "\n"
-                        info += "Id #: " + str(i["id"])+ "\n"
-                        info += "Gender:" + str(i["gender"]) + "\n"
-                        info += "Job: " + str(i["job"]) + "\n"
-                        info += "Adr: " + str(i["address1"]) + "\n"
-                        info += "Phone #: " + str(i["phone1"])+ "\n"
-                        info += "Mail: " + str(i["mail"])
-                        # delete some text if the line is too long to fix in the label
-                        for line in info.split("\n"):
-                            if len(line) >= 25:
-                                info = info.replace(line,line[0:25])
-                        # append the profile info var in one list and the picture path into another list
-                        # both at the same index
-                        self.data.append(info)
+                        # append the the picture path to list
+                        if True in i["wanted"]:
+                            self.wanted.append(True)
+                        else:
+                            self.wanted.append(False)
                         self.path.append(a)
                         
                 except:
@@ -91,37 +76,26 @@ also you can specifi a parent widget so the frame will apear inside of these wid
             self.tab.destroy()
         except:
             None
-        self.tab = Frame(parent, bg="#00bbbb", relief="ridge", borderwidth=5)
+        self.tab = Frame(parent, bg="black", relief="ridge", borderwidth=5)
         
-        profile=Frame()
-        boton=Button()
+
         row=0
         col=0
-        for a in range(len(self.data[self.index:])):
-            # create a frame to show profile picture and profile info togueter .
-            if "!!! Wanted !!!" in self.data[self.index + a]:
-                bg = "red"
-            else:
-                bg = "#0066ff"
-            profile.a = Frame(self.tab, bg=bg, relief="ridge", borderwidth=5)
-            profile.a.grid(row=row,column=col)
+        for a in range(len(self.path[self.index:])):
+
             # create a button to show the picture.
-            boton.a = Button(profile.a)
-            boton.a.grid(row=0,column=0)
-            # create a label to show the info inside of the previus frame togueter with the button.
-            Label(profile.a, text=self.data[a+self.index], width=25,justify="left", font=("Arial", 8), bg="light gray").grid(row=0,column=1, sticky="nsew")
-            
-            # read and resize the picture from the specified index.
-            img = Image.open(self.path[self.index + a] + "/"+"image.png")
-            img = img.resize((115, 138))
-            # make picture compatible with tkinter
-            imgtk = ImageTk.PhotoImage(image=img)
+            if self.wanted[a]:
+                color = "red"
+            else:
+                color = "black"
+            boton = Button(self.tab, bd=1, bg=color)
+            boton.grid(row=row,column=col)
             # configure the current profile picture to show in tkinter button.
             # add button command to call function to show the current profile info linked to ths button
             # the funcion will receive the profile path and wanted_aler=false so not play alert when we click
             # the button if the person is wanted.
-            boton.a.imgtk = imgtk
-            boton.a.configure(image=imgtk, command=lambda x=a: fun(self.path[self.index + x], wanted_alert=False))
+            boton.im = PhotoImage(file=self.path[a] + "/thumbnail card.png")
+            boton.configure(image=boton.im, command=lambda x=a: fun(self.path[self.index + x], wanted_alert=False))
 
             
             
@@ -131,7 +105,7 @@ also you can specifi a parent widget so the frame will apear inside of these wid
                     col=0
                     row+=1
             # if there is already 4 lines break
-            if row == 4:
+            if row == 3:
                     break
         return self.tab
 
@@ -139,9 +113,9 @@ also you can specifi a parent widget so the frame will apear inside of these wid
         """
 if the profiles list of too big use this method to show next page.
 """
-        # show next 16 profiles in an new frame.
-        if not (self.index+16) >= len(self.data):
-            self.index +=16
+        # show next 12 profiles in an new frame.
+        if not (self.index+12) >= len(self.data):
+            self.index +=12
             return self.get_profiles(fun, parent)
         else:
             return self.get_profiles(fun, parent)
@@ -150,9 +124,9 @@ if the profiles list of too big use this method to show next page.
         """
 if the profiles list of too big use this method to show previous page.
 """
-        # show previus 16 profiles in an new frame.
+        # show previus 12 profiles in an new frame.
         if not self.index == 0:
-            self.index -=16
+            self.index -=12
             return self.get_profiles(fun, parent)
         else:
             return self.get_profiles(fun, parent)
