@@ -1,3 +1,9 @@
+v1.3.2
+minicard.py make minicard
+profiles.py updated v1.0.7
+Face_Recognition_System.py updated to 1.5.4 some fixes in camera process to avoid start new thread without stop the previous.
+bug fixed in the gui, thread to show video was running forever slowing performance.
+
 
 v1.3.1
 face_crop.py crop the face when add new image
@@ -5,11 +11,12 @@ Face_Recognition_System.py module updated to 1.5.3 return image path if encode c
 images format changed to png old database will not work unles convert to png
 
 
+
 v1.3.0
 added multifiles with multifaces scan button
 added setting torelance and setting (quickscan <> fullscan)
 Face_Recognition_System.py module updated to 1.5.2
-new module quick_face_extractor.py
+new module quick_face_extractor.py crop faces when search images with few faces.
 
 
 v1.2.9
