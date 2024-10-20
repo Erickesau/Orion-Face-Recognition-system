@@ -37,7 +37,7 @@ if __name__ == '__main__':
     # test
     Minicard(
         image='./media/minicard.png',
-        face='output-faces/temp_image01.png',
+        face='./media/opencamera.png',
         output="card.png",
         text_list=["erick esau martinez", "fgfghggfddf", "prueba","erick esau", "programador", "prueba"]
         )

@@ -1,4 +1,4 @@
-# class to list all profiles v1.0.7 code by erick esau martinez
+# class to list all profiles v1.0.9 code by erick esau martinez
 
 import os
 import PIL
@@ -26,14 +26,13 @@ the keys must be available in the data_base/profile.json  file.
         # list all profiles path
         self.list = os.walk(top="data_base")
         # get files only
-        for a,b,c in self.list:
-            for file in c:
+        for a,folders,files in self.list:
+            for folder in folders:
                 try:
                     # read profile json file
-                    if file[-5:] == ".json":
-                        a = (a.replace("\\","/"))
-                        with open(a+"/"+file, "r") as f:
-                            i = json.load(f)
+                    if os.path.isfile(f"./data_base/{folder}/profile.json"):
+                        with open(f"./data_base/{folder}/profile.json", "r") as f:
+                            profile = json.load(f)
 
                         # filter by values this code is executed if filter_values contain something.
                         # you can change  "not in" by "!=" the diference is
@@ -42,7 +41,7 @@ the keys must be available in the data_base/profile.json  file.
                             mach = True
                             for key in filter_values.keys():
                                 if filter_values[key] != "":
-                                    if filter_values[key].lower() not in str(i[key]).lower():
+                                    if filter_values[key].lower() not in str(profile[key]).lower():
                                         mach = False
                                         break
                             if not mach:
@@ -50,14 +49,14 @@ the keys must be available in the data_base/profile.json  file.
                                 continue
 
                         # append the the picture path to list
-                        if True in i["wanted"]:
+                        if profile["alert"]:
                             self.wanted.append(True)
                         else:
                             self.wanted.append(False)
-                        self.path.append(a)
+                        self.path.append(f"data_base/{folder}")
                         
                 except:
-                    print("error in "+a+"/"+file)
+                    print(f"error./data_base/{folder}/profile.json")
                     raise
 
 
@@ -94,7 +93,7 @@ also you can specifi a parent widget so the frame will apear inside of these wid
             # add button command to call function to show the current profile info linked to ths button
             # the funcion will receive the profile path and wanted_aler=false so not play alert when we click
             # the button if the person is wanted.
-            boton.im = PhotoImage(file=self.path[a] + "/thumbnail card.png")
+            boton.im = PhotoImage(file='./'+self.path[self.index + a] + "/thumbnail card.png")
             boton.configure(image=boton.im, command=lambda x=a: fun(self.path[self.index + x], wanted_alert=False))
 
             
@@ -114,7 +113,7 @@ also you can specifi a parent widget so the frame will apear inside of these wid
 if the profiles list of too big use this method to show next page.
 """
         # show next 12 profiles in an new frame.
-        if not (self.index+12) >= len(self.data):
+        if not (self.index+12) >= len(self.path):
             self.index +=12
             return self.get_profiles(fun, parent)
         else:
