@@ -10,18 +10,20 @@ FUNCTION AVAILABLE IN THE LAST RELEASE
 > List all person profiles that are in data base.
 > Find profiles with the filter feature.
 > Edit Delete and update profiles.
-> Recognize persons from pictures.
+> Recognize persons from a picture.
+> Recognize persons from multifiles with few faces using hog algorithm.
 > Recognize persons using the webcam.
 > Mark person as wanted to play alarm when its recognized.
 > Mark person as wanted to open a custom file  when its recognized.
 > Log of previous recognized persons.
 > Futuristic design with Visual effects and sound effects.
+> email and messages alert feature
 _________________________________________________
 
 License: MIT
 Copyright (c) 2021-2022 Erick Esau Martinez
 Programing Language: Python3
-Platform: Windows, linux
+Platform: Windows, linux, other platform not tested yet
 https://www.paypal.com/paypalme/erickesau0
 Email: martinezesau90@gmail.com
 Projet blog www.erickesau.wordpress.com
@@ -30,7 +32,7 @@ Personal spanish blog Outdated www.erickesau.blogspot.com
 
 Other platform:
 macos has not been tested yet but may work, 
-if not work is because of the path separator that window use is "\\" but I replaced with "/" to make compatible with other platform that use "/" , on window work too.
+
 _________________________________________________
 
 REQUIREMENTS:
@@ -40,6 +42,7 @@ REQUIREMENTS:
     dlib
     Face Recognition
     Playsound version 1.2.2 recomended because newer version show error and need extra dependences
+    twilio (optional to send alert messages)
 
 
 Open your terminal and type:
@@ -49,6 +52,7 @@ Open your terminal and type:
     pip install dlib
     pip install face_recognition
     pip install playsound==1.2.2
+    pip install twilio
 
 face_recognition require dlib it will get automaticli installed before of face_recognition.
 Pillow and numpy will get automaticli intstalled too and the rest of dependencies.
@@ -73,7 +77,24 @@ quickscan
     *if quickscan is disabled if a result is found continue searching the full database for more results 
     and show only the result with lowes tolerance for each face search.
     *if quickscan is enabled return the first result found for each face search.(faster)
-DONE.  ENJOY
+
+
+
+
+
+EMAIL ALERT:
+    1 create google gmail account
+    2 goto google security settings and enable 2 step autentication
+    3 you will get the option to create a google app pass (select create a pass for other)
+    4 in orion setting fill the field with the gmail address and google app pass. (personal password will not work please generate google app pass)
+
+MESSAGES ALERT:
+    1 goto www.twilio.com and create account.
+    2 get a free twilio phone number.
+    3 goto caller ID and register your personal phone (free accounts can not send messages to unregistered phones)
+      if you buy a twilio plan you can send messages to everybody without register the number.
+    4 goto orion setting fill the field with twilio api sid, api token and virtual number.
+
 
 ______________________________________________
 
@@ -96,6 +117,7 @@ Inspired by:
     Elon Musk
     SpaceX
     Nasa
+    science
 
 
 
@@ -118,9 +140,9 @@ _________________________________________________
 
 import cv2
 import time
-from Face_Recognition_System import scanner
+from face_recognition_system import Scanner
 # create an objets camera=0 is an int number to select the camera that it will be used default is 0
-myscan = scanner(camera=0)
+myscan = Scanner(camera=0)
 # add new image to the data base set the picture path and user info is recomended to use a dictionary with all the info.
 myscan.encode_image('path to your picture.jpg', user_info={"key":"value", "key":"value"})
 # now load the data it will take 1 or 2 second.
@@ -145,7 +167,7 @@ while True:
     if found:
         # show the path for the encoding that math, you can read the profile info file with json is in the same folder.
         print(found)
-        myscan.stop() # stop the process
+        myscan.stop() # stop the camera
 
 # you can recognize persons from file too.
 result = myscan.scan_file("path to your file.jpg")
@@ -161,21 +183,21 @@ print(result)
 import cv2
 import time
 from PIL import ImageTk, Image
-from Face_Recognition_System import scanner
+from face_recognition_system import Scanner
 from tkinter import Frame,Tk,Label,filedialog,Button
 
 
 # here we define the root for tkinter mainloop
 root = Tk()
 #create objet myscan and use the camera at indext 0
-myscan = scanner(camera=0)
+myscan = Scanner(camera=0)
 # open file dialog with tkinter, code must be inside of tkinter mainloop if not you will get some error.
 f = filedialog.askopenfile()
 # send the image to encode and save the encoded info and sent the user info dict to save in the same folder.
 # it will take about 8 seconds
 print("encoding image")
 a = myscan.encode_image(f.name, user_info={"key":"value", "key":"value"})
-if a == 0:
+if a:
     print("encoded correct")
 else:
     print("error encoding")
@@ -298,6 +320,6 @@ window.mainloop()
 
 
 
-Copyright (c) 2021 Erick Esau Martinez
+Copyright (c) 2021-2022 Erick Esau Martinez
 martinezesau90@gmail.com
 https://www.paypal.com/paypalme/erickesau0

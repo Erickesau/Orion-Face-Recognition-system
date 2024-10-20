@@ -11,12 +11,14 @@ FUNCTION AVAILABLE IN THE LAST RELEASE
 > List all person profiles that are in data base.
 > Find profiles with the filter feature.
 > Edit Delete and update profiles.
-> Recognize persons from pictures.
+> Recognize persons from a picture.
+> Recognize persons from multifiles with few faces using hog algorithm.
 > Recognize persons using the webcam.
 > Mark person as wanted to play alarm when its recognized.
 > Mark person as wanted to open a custom file  when its recognized.
 > Log of previous recognized persons.
 > Futuristic design with Visual effects and sound effects.
+> email and messages alert feature
 _________________________________________________
 
 License: MIT
@@ -50,7 +52,22 @@ quickscan
     *if quickscan is disabled if a result is found continue searching the full database for more results 
     and show only the result with lowes tolerance for each face search.
     *if quickscan is enabled return the first result found for each face search.(faster)
-    
+
+
+
+
+EMAIL ALERT:
+    1 create google gmail account
+    2 goto google security settings and enable 2 step autentication
+    3 you will get the option to create a google app pass (select create a pass for other)
+    4 in orion setting fill the field with the gmail address and google app pass. (personal password will not work please generate google app pass)
+
+MESSAGES ALERT:
+    1 goto www.twilio.com and create account.
+    2 get a free twilio phone number.
+    3 goto caller ID and register your personal phone (free accounts can not send messages to unregistered phones)
+      if you buy a twilio plan you can send messages to everybody without register the number.
+    4 goto orion setting fill the field with twilio api sid, api token and virtual number.
 ______________________________________________
 
 Inspired by science fiction movies:

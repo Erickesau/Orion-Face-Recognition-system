@@ -1,5 +1,15 @@
+v1.3.4
+updated face_recognition_system.py added delete_profile method
+updated profiles.py
+added email and messages alert feature
+others small improvements and changes
+
+v1.3.3
+new design
+bug fixed full recognized person log was getting deleted after delete a profile
+
 v1.3.2
-minicard.py make minicard
+added minicard.py to make minicard
 profiles.py updated v1.0.7
 Face_Recognition_System.py updated to 1.5.4 some fixes in camera process to avoid start new thread without stop the previous.
 bug fixed in the gui, thread to show video was running forever slowing performance.
