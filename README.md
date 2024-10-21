@@ -46,6 +46,7 @@ _________________________________________________
     dlib
     Face Recognition
     Playsound version 1.2.2 recomended because newer version show error and need extra dependences
+    twilio (optional to send alert messages)
 ### INSTALLING REQUIREMENTS
 ### windows
     pip install opencv-python
@@ -54,6 +55,7 @@ _________________________________________________
     pip install dlib
     pip install face_recognition
     pip install playsound==1.2.2
+    pip install twilio
 
 ### HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
