@@ -63,8 +63,11 @@ _________________________________________________
 ### HOW TO USE:
     Open 'Orion FRS.py' to run the programm.
     
-### also you can download the standalone exe binary v1.3.2 for windows 64bit
+### also you can download the standalone exe binary for windows 64bit
+### v1.3.2 win64
 https://www.mediafire.com/download/m5br2sd8urqgebz
+### v1.3.4 win64 last versión 
+https://www.mediafire.com/file/k4e6qnqlszwpu5y/Orion_FRS_v1.3.4.exe/file
 ______________________________________________
 
 ### Inspired by science fiction movies:
