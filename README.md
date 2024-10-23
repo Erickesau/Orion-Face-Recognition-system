@@ -35,6 +35,9 @@ _________________________________________________
 > Mark person as wanted to open a custom file  when its recognized.
 > 
 > Log of previous recognized persons.
+> 
+> send email or alert messages
+> 
 > Futuristic design with Visual effects and sound effects.
 _________________________________________________
 
@@ -82,6 +85,7 @@ ______________________________________________
     Wavepad audio editor
     Images source: Oblivion, Polaris face recognition.
     Audio source: Oblivion, Youtube.
+    user interface made with tkinter
 --------------------------------------------------
 License: MIT
 
