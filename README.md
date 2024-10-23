@@ -8,11 +8,11 @@ so I decided to share the projet for free
 
 if you like please contribute with a small donation.
 
-<img src="/Examplefiles/search camera.png" width=600>
+<img src="/Examplefiles/clear.png" width=600>
 <img src="/Examplefiles/add.PNG" width=600>
-<img src="/Examplefiles/list.png" width=600>
-<img src="/Examplefiles/search from file.png" width=600>
-<img src="/Examplefiles/search.png" width=600>
+<img src="/Examplefiles/list1.png" width=600>
+<img src="/Examplefiles/video" width=600>
+<img src="/Examplefiles/video2.png" width=600>
 
 _________________________________________________
 
